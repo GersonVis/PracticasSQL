@@ -33,6 +33,8 @@ alter table users add book_id int unsigned;
 alter table users add constraint user_book foreign key(book_id) references books(book_id);
 -- delete foreign key
 -- alter table table_name drop foreign key column_name;
-alter table users drop foreign key book_id;
+alter table users drop constraint key user_book;
 -- delete column
 alter table users drop column book_id;
+
+
