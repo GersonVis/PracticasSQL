@@ -21,9 +21,27 @@ create table books(
       book_description varchar(250),
       pages integer unsigned,
       publication_date date not null,
-      create_date datetime default current_timestamp
-      
+      create_date datetime default current_timestamp,
+      foreign key (author_id) references authors(author_id) on delete cascade
 );
+create table users(
+      user_id int unsigned primary key AUTO_INCREMENT,
+      first_name varchar(25) not null,
+      last_name varchar(25),
+      user_name varchar(25) not null,
+      email varchar(25) not null,
+      creation_date datetime default current_timestamp
+);
+
+create table usuarios_libros(
+    libro_id int unsigned not null,
+    usuario_id int unsigned not null,
+    
+    foreign key(libro_id) references libros(libro_id),
+    foreign key(usuario_id) references usuarios(usuario_id),
+    fecha_creacion datetime default current_timestamp
+);
+insert into usuarios
 -- foreign key (author_id) references authors(author_id)
 -- we insert register first in the table with primary key
 insert into authors(first_name, last_name, pseudonym, sex, birth_date, country_origin)
@@ -42,3 +60,16 @@ values(1, "Hora de aventura", "Book about a child", 83, "2010-12-23"),
 insert into books(author_id, title, book_description, pages, publication_date)
 values(3, "Hora de aventura", "Book about a child", 83, "2010-12-23");
 
+insert into users values(null, "Gerson", "Visoso", "ghostlife", "visoso@gmail.com", null),
+                         (null, "Juan", "Castro", "runFast", "runfast@gmail.com", null);
+
+
+create table usuarios_libros(
+    libro_id int unsigned not null,
+    usuario_id int unsigned not null,
+    
+    foreign key(libro_id) references libros(libro_id),
+    foreign key(usuario_id) references usuarios(usuario_id),
+    fecha_creacion datetime default current_timestamp
+);
+insert into usuarios values(1,1), (2,1), (3,1);

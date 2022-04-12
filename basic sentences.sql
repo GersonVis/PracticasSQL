@@ -160,8 +160,10 @@ delete from authors where author_id=1;
 
 --Truncate table
 --setence: truncate table table_name;
-/*Description: restar definition table, this sentence restart the table, for example, restart count AUTO_INCREMENT,
-is imposible get it back registers, the table crashes, destroy all metadatos
+/*Description: restart definition table, this sentence restart the table, for example, restart count AUTO_INCREMENT,
+is imposible get it back registers, the table crashes, destroy all metadatos, imposible to used "where"
 */
 --examples
-truncate table books2;
+truncate table authors2;
+truncate table books;
+truncate table author;
